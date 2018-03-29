@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+   	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+   	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	<include file="struts-default.xml"/>
+	<package name="a" extends="struts-default">
+ 
+		<action name="view" class="com.crud.display">
+		<result name="success">/index.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+ 		
+ 		<action name="saveMe" class="com.crud.insert">
+		<result name="success">/temp.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+ 		
+ 		<action name="updateMe" class="com.crud.update">
+		<result name="success">/temp.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="deleteMe" class="com.crud.delete">
+		<result name="success">/temp.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- <action name="sortName" class="com.crud.sortingData" method="sortName">
+		<result name="success">/index.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="sortRollNo" class="com.crud.sortingData" method="sortRollNo">
+		<result name="success">/index.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		 -->
+		<action name="sort*" class="com.crud.sortingData" method="{1}">
+		<result name="success">/index.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="pagination" class="com.crud.pagination" method="execute">
+		<result name="null">index.jsp</result>
+		<result name="success">index.jsp</result>
+		<result name="error">error.jsp</result>
+		<result name="input">index.jsp</result>
+		</action>
+		
+		<action name="pageVal" class="com.crud.pageValue" method="getPage">
+		<result name="success">/temp.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="dTag" class="com.crud.displayTag">
+			<result name="success">/displayTag.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="disTag" class="com.crud.displayTag" method="dis">
+			<result name="success">/displayTag.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="addField" class="com.crud.addField">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+	</package>
+</struts>
